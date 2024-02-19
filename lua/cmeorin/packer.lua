@@ -13,15 +13,6 @@ return require("packer").startup(function(use)
 	  requires = { {"nvim-lua/plenary.nvim"} }
   }
 
-  use("folke/tokyonight.nvim")
-
-  use({
-	  "rose-pine/neovim",
-	  as = "rose-pine",
-	  config = function()
-		  vim.cmd("colorscheme rose-pine")
-	  end
-  })
 
   use({
       "folke/trouble.nvim",
@@ -42,8 +33,6 @@ return require("packer").startup(function(use)
 				ts_update()
 			end,}
   use("nvim-treesitter/playground")
-
-  use("~/personal/harpoon")
 
   use("theprimeagen/vim-be-good")
   use("theprimeagen/refactoring.nvim")
