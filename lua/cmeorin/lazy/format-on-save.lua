@@ -1,9 +1,9 @@
-local format_on_save = require("format-on-save")
-local formatters = require("format-on-save.formatters")
 return {
 
     "elentok/format-on-save.nvim",
     config = function()
+        local format_on_save = require("format-on-save")
+        local formatters = require("format-on-save.formatters")
         format_on_save.setup({
 
             experiments = {
@@ -19,8 +19,11 @@ return {
                 markdown = formatters.prettierd,
                 openscad = formatters.lsp,
                 python = {
+                    formatters.lsp,
                     formatters.remove_trailing_whitespace,
                     formatters.remove_trailing_newlines,
+                },
+                mojo = {
                     formatters.black,
                 },
                 rust = formatters.lsp,
@@ -43,6 +46,7 @@ return {
                     end
                 end,
             },
+
             fallback_formatter = {
                 formatters.remove_trailing_whitespace,
                 formatters.remove_trailing_newlines,
