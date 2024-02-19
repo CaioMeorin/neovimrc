@@ -1,1 +1,1 @@
-git clone https://github.com/CaioMeorin/neovimrc ~/.config/nvim
+git clone git@github.com:CaioMeorin/neovimrc.git ~/.config/nvim
