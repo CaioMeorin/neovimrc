@@ -1,4 +1,6 @@
 return {
+    "williamboman/mason.nvim",
+    "rshkarin/mason-nvim-lint",
     "mfussenegger/nvim-lint",
     dependencies = {
         "williamboman/mason.nvim",
@@ -14,7 +16,7 @@ return {
             automatic_installation = true,
         })
         local lint = require("lint")
-        lint.setup({
+        lint.setup {
             linters_by_ft = {
                 mojo = { "mojo", },
                 python = { "mypy", },
@@ -26,6 +28,6 @@ return {
                     require("lint").try_lint()
                 end,
             })
-        })
+        }
     end
 }
