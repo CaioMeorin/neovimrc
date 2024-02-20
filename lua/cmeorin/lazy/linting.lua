@@ -22,6 +22,7 @@ return {
                 python = { "mypy", },
                 kotlin = { "ktlint", },
                 html = { "djlint", },
+                js = { "tailwindcss" },
             },
             vim.api.nvim_create_autocmd({ "ModeChanged", "BufRead", "BufWrite" }, {
                 callback = function()
