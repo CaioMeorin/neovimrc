@@ -21,13 +21,16 @@ return {
                 mojo = { "black" },
                 -- Use a sub-list to run only the first available formatter
                 javascript = { { "prettierd", "prettier" } },
+
+                json = { { "prettierd", "prettier" } },
+                html = { { "prettierd", "prettier" } },
             },
             ["*"] = { "trim_whitespace" },
             format_after_save = { lsp_fallback = true, timeout = 500 },
             condition = function(ctx)
                 return vim.fs.basename(ctx.filename) ~= "README.md"
             end,
-            vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+            vim.api.nvim_create_autocmd({ "BufWritePre", }, {
                 pattern = "*",
                 callback = function(args)
                     require("conform").format({ bufnr = args.buf })

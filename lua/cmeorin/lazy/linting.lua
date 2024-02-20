@@ -21,8 +21,9 @@ return {
                 mojo = { "mojo", },
                 python = { "mypy", },
                 kotlin = { "ktlint", },
-                html = { "djlint", },
                 js = { "tailwindcss" },
+                json = { "jsonlint" },
+                html = { "tailwindcss" },
             },
             vim.api.nvim_create_autocmd({ "ModeChanged", "BufRead", "BufWrite" }, {
                 callback = function()

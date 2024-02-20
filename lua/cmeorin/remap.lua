@@ -4,7 +4,7 @@ vim.keymap.set("n", "<leader><CR>", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("i", "jj", "<Esc>")
+vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
@@ -60,10 +60,10 @@ vim.keymap.set('n', "<leader>ww", function()
     vim.cmd('w')
 end)
 -- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("x", "p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
@@ -92,6 +92,7 @@ end)
 local buf = vim.api.nvim_win_get_buf(0)
 if vim.bo[buf].readonly == false and vim.fn.getreg('%') ~= '' then
     vim.api.nvim_create_autocmd({ 'TextYankPost', 'InsertLeave' }, {
+        pattern = '*',
         group = vim.api.nvim_create_augroup("OnDifUptSave", {}),
         callback = function()
             vim.cmd("w", { silent = true, })
