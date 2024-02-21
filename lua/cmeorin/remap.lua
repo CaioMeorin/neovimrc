@@ -1,4 +1,34 @@
 vim.g.mapleader = " "
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
+-- Move to previous/next
+map("n", "<Tab>", "<Cmd>BufferPrevious<CR>", opts)
+map("n", "<S-Tab>", "<Cmd>BufferNext<CR>", opts)
+-- Re-order to previous/next
+map("n", "<A-,>", "<Cmd>BufferMovePrevious<CR>", opts)
+map("n", "<A-.>", "<Cmd>BufferMoveNext<CR>", opts)
+-- Goto buffer in position...
+map("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", opts)
+map("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", opts)
+map("n", "<A-3>", "<Cmd>BufferGoto 3<CR>", opts)
+map("n", "<A-4>", "<Cmd>BufferGoto 4<CR>", opts)
+map("n", "<A-5>", "<Cmd>BufferGoto 5<CR>", opts)
+map("n", "<A-6>", "<Cmd>BufferGoto 6<CR>", opts)
+map("n", "<A-7>", "<Cmd>BufferGoto 7<CR>", opts)
+map("n", "<A-8>", "<Cmd>BufferGoto 8<CR>", opts)
+map("n", "<A-9>", "<Cmd>BufferGoto 9<CR>", opts)
+map("n", "<A-0>", "<Cmd>BufferLast<CR>", opts)
+-- Pin/unpin buffer
+map("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
+-- Close buffer
+map("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
+
+map("n", "<A-h>", "<C-w>h", opts)
+map("n", "<A-j>", "<C-w>j", opts)
+map("n", "<A-k>", "<C-w>k", opts)
+map("n", "<A-l>", "<C-w>l", opts)
+
 vim.keymap.set("n", "<leader><CR>", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -13,16 +43,16 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<leader>X", ":!node %:p<Cr>")
 
 vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
+	require("vim-with-me").StartVimWithMe()
 end)
 vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
+	require("vim-with-me").StopVimWithMe()
 end)
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<space>f", function()
-    require("conform").format({ async = true, lsp_fallback = true })
+	require("conform").format({ async = true, lsp_fallback = true })
 end)
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
@@ -32,32 +62,32 @@ vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-    callback = function(ev)
-        -- Enable completion triggered by <c-x><c-o>
-        vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+	callback = function(ev)
+		-- Enable completion triggered by <c-x><c-o>
+		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-        -- Buffer local mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local opts = { buffer = ev.buf }
-        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-        vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-        vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-        vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-        vim.keymap.set("n", "<space>wl", function()
-            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end, opts)
-        vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-        vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-        vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-    end,
+		-- Buffer local mappings.
+		-- See `:help vim.lsp.*` for documentation on any of the below functions
+		local opts = { buffer = ev.buf }
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+		vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+		vim.keymap.set("n", "<space>wl", function()
+			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+		end, opts)
+		vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+		vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+	end,
 })
-vim.keymap.set('n', "<leader>ww", function()
-    vim.cmd('w')
+vim.keymap.set("n", "<leader>ww", function()
+	vim.cmd("w")
 end)
 -- greatest remap ever
 vim.keymap.set("x", "p", [["_dP]])
@@ -86,16 +116,16 @@ vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/the
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+	vim.cmd("so")
 end)
 
 local buf = vim.api.nvim_win_get_buf(0)
-if vim.bo[buf].readonly == false and vim.fn.getreg('%') ~= '' then
-    vim.api.nvim_create_autocmd({ 'TextYankPost', 'InsertLeave' }, {
-        pattern = '*',
-        group = vim.api.nvim_create_augroup("OnDifUptSave", {}),
-        callback = function()
-            vim.cmd("w", { silent = true, })
-        end
-    })
+if vim.bo[buf].readonly == false and vim.fn.getreg("%") ~= "" then
+	vim.api.nvim_create_autocmd({ "TextYankPost", "InsertLeave" }, {
+		pattern = "*",
+		group = vim.api.nvim_create_augroup("OnDifUptSave", {}),
+		callback = function()
+			vim.cmd("w", { silent = true })
+		end,
+	})
 end
