@@ -24,11 +24,6 @@ map("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
 -- Close buffer
 map("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
 
-map("n", "<A-h>", "<C-w>h", opts)
-map("n", "<A-j>", "<C-w>j", opts)
-map("n", "<A-k>", "<C-w>k", opts)
-map("n", "<A-l>", "<C-w>l", opts)
-
 vim.keymap.set("n", "<leader><CR>", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -121,7 +116,7 @@ end)
 
 local buf = vim.api.nvim_win_get_buf(0)
 if vim.bo[buf].readonly == false and vim.fn.getreg("%") ~= "" then
-	vim.api.nvim_create_autocmd({ "TextYankPost", "InsertLeave" }, {
+	vim.api.nvim_create_autocmd({ "TextYankPost", "InsertLeave", "BufHidden" }, {
 		pattern = "*",
 		group = vim.api.nvim_create_augroup("OnDifUptSave", {}),
 		callback = function()
