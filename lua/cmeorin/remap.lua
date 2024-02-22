@@ -116,14 +116,3 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 vim.keymap.set("n", "<leader><leader>", function()
 	vim.cmd("so")
 end)
-
-local buf = vim.api.nvim_win_get_buf(0)
-if vim.bo[buf].readonly == false and vim.fn.getreg("%") ~= "" then
-	vim.api.nvim_create_autocmd({ "TextYankPost", "InsertLeave" }, {
-		pattern = "*",
-		group = vim.api.nvim_create_augroup("OnDifUptSave", {}),
-		callback = function()
-			vim.cmd("w", { silent = true })
-		end,
-	})
-end

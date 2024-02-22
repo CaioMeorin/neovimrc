@@ -14,6 +14,8 @@ return {
 			vim.keymap.set("n", "<A-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
 			vim.keymap.set("n", "<A-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
 			vim.keymap.set("n", "<A-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
+			vim.keymap.set("n", "<A-s>", "<Cmd>vsplit<CR><Cmd>NvimTmuxNavigateRight<CR>")
+			vim.keymap.set("n", "<A-S>", "<Cmd>split<CR><Cmd>NvimTmuxNavigateDown<CR>")
 		end,
 	},
 }
