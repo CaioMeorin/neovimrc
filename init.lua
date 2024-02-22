@@ -13,3 +13,4 @@ vim.api.nvim_create_autocmd("ColorScheme *", {
 })
 
 vim.cmd.colorscheme "catppuccin"
+require("cmeorin.visualclose")

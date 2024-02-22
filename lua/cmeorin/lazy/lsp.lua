@@ -46,11 +46,10 @@ return {
                             pylsp = {
                                 plugins = {
                                     pycodestyle = {
-                                        ignore = { 'W391' },
-                                        maxLineLength = lineWidth,
+                                        enabled = false
                                     },
                                     autopep8 = { enabled = true, maxLineLength = lineWidth },
-                                    pylint = { enabled = true },
+                                    pylint = { enabled = true, maxLineLength = lineWidth },
                                     mccabe = { enabled = false },
                                     pydocstyle = { enabled = false },
                                     isort = { enabled = true, profile = "autopep8" },
