@@ -46,11 +46,16 @@ return {
                             pylsp = {
                                 plugins = {
                                     pycodestyle = {
-                                        enabled = false
+                                        enabled = true,
+                                        maxLineLength = lineWidth,
+                                        hangClosing = true,
+                                        indentSize = 4,
                                     },
+                                    rope_autoimport = { enabled = true },
                                     autopep8 = { enabled = true, maxLineLength = lineWidth },
-                                    pylint = { enabled = true, maxLineLength = lineWidth },
-                                    mccabe = { enabled = false },
+                                    flake8 = { enabled = true, maxLineLength = lineWidth },
+                                    pylint = { enabled = false, maxLineLength = lineWidth },
+                                    mccabe = { enabled = true },
                                     pydocstyle = { enabled = false },
                                     isort = { enabled = true, profile = "autopep8" },
                                     mypy = { enabled = true, maxLineLength = lineWidth },
