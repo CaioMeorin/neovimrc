@@ -6,7 +6,7 @@ return {
         local conform = require("conform")
         conform.setup({
             ensure_installed = {
-                "black",
+                "autopep8",
                 "isort",
                 "prettierd",
                 "prettier",
@@ -17,7 +17,7 @@ return {
             formatters_by_ft = {
                 lua = { "stylua" },
                 -- Conform will run multiple formatters sequentially
-                python = { "isort", "black" },
+                python = { "isort", "autopep8" },
                 mojo = { "black" },
                 -- Use a sub-list to run only the first available formatter
                 javascript = { { "prettierd", "prettier" } },

@@ -39,22 +39,22 @@ return {
                     })
                 end,
                 ['pylsp'] = function()
+                    local lineWidth = 90
+
                     require 'lspconfig'.pylsp.setup {
                         settings = {
                             pylsp = {
                                 plugins = {
                                     pycodestyle = {
                                         ignore = { 'W391' },
-                                        maxLineLength = 90,
-
+                                        maxLineLength = lineWidth,
                                     },
-                                    autopep8 = { enabled = false },
+                                    autopep8 = { enabled = true, maxLineLength = lineWidth },
                                     pylint = { enabled = true },
                                     mccabe = { enabled = false },
                                     pydocstyle = { enabled = false },
-                                    black = { enabled = true, maxLineLength = 90 },
-                                    isort = { enabled = true, profile = "black" },
-                                    mypy = { enabled = true, maxLineLength = 90 },
+                                    isort = { enabled = true, profile = "autopep8" },
+                                    mypy = { enabled = true, maxLineLength = lineWidth },
                                     jedi_completion = { fuzzy = true },
                                     pyflakes = { enabled = false },
                                 }
