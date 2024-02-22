@@ -2,6 +2,9 @@ vim.g.mapleader = " "
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+-- Cloak toggle
+map("n", "<leader>ct", ":CloakToggle<CR>", { desc = "Toogle cloak on/off" })
+
 -- Buffer saving.
 map("n", "<C-s>", "<Cmd>w!<CR>", opts)
 -- Move to pre.vious/next
