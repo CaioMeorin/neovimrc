@@ -25,6 +25,7 @@ return {
 
         require("fidget").setup({})
         require("mason").setup()
+        require("cmeorin.modules.neodev")
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
