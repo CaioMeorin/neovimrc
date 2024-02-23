@@ -16,7 +16,6 @@ return {
             require "cmeorin.modules.dapui_config"
             require('telescope').load_extension('dap')
             require "cmeorin.modules.cmp_dap"
-            require('nvim-dap-repl-highlights').setup()
         end
     },
 

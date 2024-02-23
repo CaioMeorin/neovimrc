@@ -6,7 +6,7 @@ local opts = { noremap = true, silent = true }
 map("n", "<leader>ct", ":CloakToggle<CR>", { desc = "Toogle cloak on/off" })
 
 -- Buffer saving.
-map("n", "<C-s>", "<Cmd>w!<CR>", opts)
+map("n", "<C-s>", "<Cmd>w!<CR>", {})
 -- Move to pre.vious/next
 map("n", "<S-Tab>", "<Cmd>BufferPrevious<CR>", opts)
 map("n", "<Tab>", "<Cmd>BufferNext<CR>", opts)

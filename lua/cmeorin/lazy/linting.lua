@@ -21,7 +21,6 @@ return {
         lint.setup({
             linters_by_ft = {
                 mojo = { "mojo" },
-                python = { { "mypy", "pylint" } },
                 kotlin = { "ktlint" },
                 js = { { "eslint", "babel-eslint" } },
                 json = { "jsonlint" },
