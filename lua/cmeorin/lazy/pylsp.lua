@@ -10,9 +10,9 @@ return {require'lspconfig'.pylsp.setup{
         autopep8 = {enabled = false},
         black = {enabled = true},
         pylsp_mypy = { enabled = true },
-                pyls_isort = { enabled = false },
+        pyls_isort = { enabled = false },
         mypy = {enabled = true},
-                jedi_completion = { fuzzy = true },
+        jedi_completion = { fuzzy = true },
       }
     }
   }
