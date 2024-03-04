@@ -31,6 +31,9 @@ return {
                 "lua_ls",
                 "tsserver",
                 "tailwindcss",
+                "pylsp",
+                "clangd",
+                "rust-analyzer",
                 "volar",
             },
             handlers = {
