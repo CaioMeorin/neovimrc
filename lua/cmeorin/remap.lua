@@ -1,8 +1,36 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>e", vim.cmd.Oi)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set('n', '<leader>pn', ':lua require("dap-python").test_method()<CR>', { silent = true })
+vim.keymap.set('n', '<leader>pf', ":lua require('dap-python').test_class()<CR>", { silent = true })
+vim.keymap.set('v', '<leader>ps', "<ESC>:lua require('dap-python').debug_selection()<CR>", { silent = true })
+vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
+vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
+vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+vim.keymap.set('n', '<leader>b', function() require('dap').toggle_breakpoint() end)
+vim.keymap.set('n', '<leader>B', function() require('dap').set_breakpoint() end)
+vim.keymap.set('n', '<leader>lp',
+    function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+vim.keymap.set('n', '<leader>dr', function() require('dap').repl.open() end)
+vim.keymap.set('n', '<leader>dl', function() require('dap').run_last() end)
+vim.keymap.set({ 'n', 'v' }, '<leader>dh', function()
+    require('dap.ui.widgets').hover()
+end)
+vim.keymap.set({ 'n', 'v' }, '<leader>dp', function()
+    require('dap.ui.widgets').preview()
+end)
+vim.keymap.set('n', '<leader>df', function()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.frames)
+end)
+vim.keymap.set('n', '<leader>ds', function()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.scopes)
+end)
 
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -21,10 +49,10 @@ end)
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -48,4 +76,3 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
-

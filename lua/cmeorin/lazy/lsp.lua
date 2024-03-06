@@ -14,6 +14,7 @@ return {
     },
 
     config = function()
+        local lspconfig = require("lspconfig")
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
@@ -32,20 +33,32 @@ return {
             },
             handlers = {
                 function(server_name) -- default handler (optional)
-
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
                 end,
 
                 ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {
                         capabilities = capabilities,
                         settings = {
                             Lua = {
                                 diagnostics = {
                                     globals = { "vim", "it", "describe", "before_each", "after_each" },
+                                }
+                            }
+                        }
+                    }
+                end,
+                ["pylsp"] = function()
+                    lspconfig.pylsp.setup {
+                        settings = {
+                            pylsp = {
+                                plugins = {
+                                    pycodestyle = {
+                                        ignore = { 'W391' },
+                                        maxLineLength = 100
+                                    }
                                 }
                             }
                         }
