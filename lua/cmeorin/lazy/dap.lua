@@ -13,7 +13,7 @@ return {
 
         dapui.setup({})
 
-        require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+        require('dap-python').setup("/home/cmeorin/.pyenv/shims/python")
         require('neodev').setup({
             library = { plugins = { 'nvim-dap-ui' }, types = true },
         })

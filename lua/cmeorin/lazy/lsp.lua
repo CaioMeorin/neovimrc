@@ -58,7 +58,12 @@ return {
                                     pycodestyle = {
                                         ignore = { 'W391' },
                                         maxLineLength = 100
-                                    }
+                                    },
+                                    black = {
+                                        enable = true,
+                                        ignore = { 'W391' },
+                                        maxLineLength = 100,
+                                    },
                                 }
                             }
                         }
