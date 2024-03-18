@@ -1,3 +1,4 @@
+local vim = vim
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 local map = vim.api.nvim_set_keymap
@@ -16,7 +17,7 @@ vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set({ 'i', 'x', 'v', 'n' }, '<C-c>', '<Esc>')
 vim.keymap.set('n', '<leader>X', ':!node %:p<Cr>')
-vim.keymap.set('n', '<leader><CR>', vim.cmd.Ex)
+vim.keymap.set('n', '<leader><CR>', vim.cmd.Oi)
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 -- Diagnostic keymaps
